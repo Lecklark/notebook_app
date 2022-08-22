@@ -1,6 +1,7 @@
 import {store} from "../store";
 
 export interface IContact {
+    id?:number,
     fullname:string;
     email:string;
     phone:string;
