@@ -2,14 +2,13 @@ import {FC, useState} from 'react';
 import {Box} from "@chakra-ui/react";
 import SearchInput from "../../components/Common/SearchInput";
 import {useContacts} from "../../features/hooks/useContacts";
-import CreateContactModal from "../../components/Contacts/CreateContactModal";
+import CreateContactModal from "../../components/Contacts/Modals/CreateContactModal";
 import ContactsTable from "../../components/Contacts/ContactsTable";
-import PagePaginator from "../../components/Common/PagePaginator";
 
 const Contacts: FC = () => {
 
     const [search, setSearch] = useState<string>("");
-    const {data: contactsList} = useContacts();
+    const {data: contactsList=[]} = useContacts({search});
 
     return (
         <Box height='100%'
@@ -28,10 +27,8 @@ const Contacts: FC = () => {
             </Box>
 
             {contactsList && contactsList.length > 0 &&
-            <>
-                <ContactsTable dataArray={contactsList}/>
-                <PagePaginator totalItemsCount={contactsList.length}/>
-            </>}
+            <ContactsTable dataArray={contactsList}/>
+            }
         </Box>
     )
 }

@@ -10,13 +10,13 @@ import {
     ModalOverlay,
     useDisclosure, useMediaQuery
 } from "@chakra-ui/react";
-import {IContact} from "../../../types";
+import {IContact} from "../../../../types";
 import {FormikProvider, useFormik} from "formik";
 import {AddIcon, CloseIcon} from "@chakra-ui/icons";
-import FormikInput from "../../Common/FormikComponents/FormikInput";
-import {useCreateContact} from "../../../features/hooks/useContacts";
+import FormikInput from "../../../Common/FormikComponents/FormikInput";
+import {useCreateContact} from "../../../../features/hooks/useContacts";
 import {useQueryClient} from "@tanstack/react-query";
-import {CreateAndEditContactForm} from "../../../features/validation/CreateAndEditContactForm";
+import {CreateAndEditContactForm} from "../../../../features/validation/CreateAndEditContactForm";
 
 const CreateContactModal:FC = () => {
 
