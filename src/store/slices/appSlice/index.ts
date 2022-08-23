@@ -1,14 +1,14 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from "../../../types";
 
 interface AppState {
     token: string;
-    isAuth:boolean;
+    isAuth: boolean;
 }
 
 const initialState: AppState = {
     token: "",
-    isAuth:false,
+    isAuth: false,
 }
 
 export const appSlice = createSlice({
@@ -17,13 +17,13 @@ export const appSlice = createSlice({
     reducers: {
         login: (state, action: PayloadAction<string>) => {
             state.token = action.payload;
-            state.isAuth=true;
+            state.isAuth = true;
         },
         logout: () => initialState
     }
 })
 
-export const { login, logout } = appSlice.actions;
+export const {login, logout} = appSlice.actions;
 
 export const isAuthInState = (state: RootState) => state.app.isAuth
 

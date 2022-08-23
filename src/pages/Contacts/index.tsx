@@ -1,5 +1,5 @@
 import {FC, useState} from 'react';
-import {Box} from "@chakra-ui/react";
+import {Box, Text} from "@chakra-ui/react";
 import SearchInput from "../../components/Common/SearchInput";
 import {useContacts} from "../../features/hooks/useContacts";
 import CreateContactModal from "../../components/Contacts/Modals/CreateContactModal";
@@ -8,7 +8,7 @@ import ContactsTable from "../../components/Contacts/ContactsTable";
 const Contacts: FC = () => {
 
     const [search, setSearch] = useState<string>("");
-    const {data: contactsList=[]} = useContacts({search});
+    const {data: contactsList = [], isError} = useContacts({search});
 
     return (
         <Box height='100%'
@@ -25,10 +25,8 @@ const Contacts: FC = () => {
                 />
                 <CreateContactModal/>
             </Box>
-
-            {contactsList && contactsList.length > 0 &&
-            <ContactsTable dataArray={contactsList}/>
-            }
+            {contactsList && contactsList.length > 0 ? <ContactsTable dataArray={contactsList}/> : null }
+            {isError ? <Text textAlign='center' mt={10}>Ошибка при загрузке данных</Text> : null}
         </Box>
     )
 }

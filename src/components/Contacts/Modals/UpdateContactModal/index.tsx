@@ -3,33 +3,34 @@ import {
     Box,
     Button,
     Divider,
+    IconButton,
     Modal,
     ModalBody,
-    ModalContent, ModalFooter,
+    ModalContent,
+    ModalFooter,
     ModalHeader,
     ModalOverlay,
-    useDisclosure, useMediaQuery
+    useDisclosure,
 } from "@chakra-ui/react";
+import {BASE_CONTACT_QUERY_KEY, useUpdateContact} from "../../../../features/hooks/useContacts";
+import {useQueryClient} from "@tanstack/react-query";
 import {IContact} from "../../../../types";
 import {FormikProvider, useFormik} from "formik";
-import {AddIcon, CloseIcon} from "@chakra-ui/icons";
-import FormikInput from "../../../Common/FormikComponents/FormikInput";
-import {BASE_CONTACT_QUERY_KEY, useCreateContact} from "../../../../features/hooks/useContacts";
-import {useQueryClient} from "@tanstack/react-query";
 import {CreateAndEditContactForm} from "../../../../features/validation/CreateAndEditContactForm";
+import {CloseIcon, EditIcon} from "@chakra-ui/icons";
+import FormikInput from "../../../Common/FormikComponents/FormikInput";
 
-const CreateContactModal: FC = () => {
+interface UpdateContactModalProps {
+    contact: IContact,
+    id: number
+}
+
+const UpdateContactModal: FC<UpdateContactModalProps> = ({contact, id}) => {
 
     const {isOpen, onOpen, onClose} = useDisclosure();
-    const [isLargerThan1400] = useMediaQuery('(min-width: 1400px)');
-    const {mutate: createNewContact} = useCreateContact();
+    const {mutate: updateContact} = useUpdateContact();
     const queryClient = useQueryClient();
-    const initialValues: IContact = {
-        fullname: '',
-        email: '',
-        phone: '',
-        address: '',
-    }
+    const initialValues = contact;
 
     const formik = useFormik({
         initialValues,
@@ -40,7 +41,10 @@ const CreateContactModal: FC = () => {
     const handleSubmit = formik.submitForm;
 
     function onSubmitHandler(values: IContact) {
-        createNewContact(values, {
+        updateContact({
+            contact: values,
+            id: id,
+        }, {
             onSuccess: () => {
                 queryClient.invalidateQueries([BASE_CONTACT_QUERY_KEY]);
                 onClose();
@@ -50,18 +54,19 @@ const CreateContactModal: FC = () => {
 
     return (
         <>
-            <Button onClick={onOpen}
-                    rightIcon={isLargerThan1400 ? <AddIcon/> : undefined}
-            >
-                {isLargerThan1400 ? "Новый контакт" : <AddIcon/>}
-            </Button>
+            <IconButton
+                aria-label='update-contact'
+                variant='unstyled'
+                icon={<EditIcon/>}
+                onClick={onOpen}
+            />
 
             <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay/>
                 <ModalContent w='100%' maxW={{base: '288px', md: '720px', '2xl': '885px'}}>
                     <FormikProvider value={formik}>
                         <ModalHeader mb='10px' display='flex' fontSize={{base: '18px', '2xl': '24px'}}>
-                            Создать новый контакт
+                            Обновить контакт
                             <Box ml='auto' display='flex' fontSize={{base: '12px', '2xl': '14px'}} gridGap={4}>
                                 <Button w='100%' variant='solid' fontSize='inherit' onClick={onClose}>
                                     <CloseIcon/>
@@ -93,4 +98,4 @@ const CreateContactModal: FC = () => {
     )
 }
 
-export default CreateContactModal
+export default UpdateContactModal

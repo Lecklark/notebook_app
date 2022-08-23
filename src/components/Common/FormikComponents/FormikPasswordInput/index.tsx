@@ -11,22 +11,22 @@ import {
     InputGroup,
     InputRightElement,
 } from "@chakra-ui/react";
-import { ViewIcon, ViewOffIcon} from "@chakra-ui/icons";
+import {ViewIcon, ViewOffIcon} from "@chakra-ui/icons";
 import {FormikInputProps} from "../../../../types";
 
 
-const FormikPasswordInput:FC<FormikInputProps>=({name,id,label,...rest})=>{
+const FormikPasswordInput: FC<FormikInputProps> = ({name, id, label, ...rest}) => {
 
-    const [field, meta, { setValue, setTouched }] = useField(name);
+    const [field, meta, {setValue, setTouched}] = useField(name);
     const [show, setShow] = useState(false);
 
-    const errorMessage:string|null = useMemo(()=>{
+    const errorMessage: string | null = useMemo(() => {
         if (meta.error) {
-            const message = meta.value==='' ? FIELD_REQUIRED_ERROR_MESSAGE : meta.error;
+            const message = meta.value === '' ? FIELD_REQUIRED_ERROR_MESSAGE : meta.error;
             return message
         }
         return null
-    },[meta.error,meta.value])
+    }, [meta.error, meta.value])
 
     return (
         <FormControl
@@ -58,8 +58,8 @@ const FormikPasswordInput:FC<FormikInputProps>=({name,id,label,...rest})=>{
                         aria-label="view pass button"
                         size="sm"
                         borderRadius='6px'
-                        onClick={()=>setShow(prev=>!prev)}
-                        icon={show ? <ViewIcon /> : <ViewOffIcon />}
+                        onClick={() => setShow(prev => !prev)}
+                        icon={show ? <ViewIcon/> : <ViewOffIcon/>}
                         outline='none'
                     />
                 </InputRightElement>

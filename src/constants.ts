@@ -5,25 +5,25 @@ export const LOGIN_PAGE = '/login';
 export const CONTACTS_PAGE = '/contacts';
 
 //text_messages
-export const FIELD_REQUIRED_ERROR_MESSAGE="Обязательное поле";
+export const FIELD_REQUIRED_ERROR_MESSAGE = "Обязательное поле";
 
 //url's
-export const BASE_API_URL="http://localhost:5000"
+export const BASE_API_URL = "https://takeoff-test-server.herokuapp.com"
 
 //table configs
 export const CONTACTS_TABLE_HEADERS = [{
-    Header:'Имя и фамилия',
-    accessor:'fullname',
-},{
-    Header:'E-mail',
+    Header: 'Имя и фамилия',
+    accessor: 'fullname',
+}, {
+    Header: 'E-mail',
     accessor: 'email',
-},{
-    Header:'Телефон',
+}, {
+    Header: 'Телефон',
     accessor: 'phone',
-},{
-    Header:'Адрес',
+}, {
+    Header: 'Адрес',
     accessor: 'address'
-},{
-    Header:'',
+}, {
+    Header: '',
     accessor: 'funcColumn'
 }]

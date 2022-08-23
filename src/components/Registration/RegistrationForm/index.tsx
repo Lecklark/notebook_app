@@ -11,23 +11,23 @@ const RegistrationForm: FC = () => {
 
     const initialValues: IUser = {username: '', password: ''};
     const toast = useToast();
-    const {mutate:regUser} = useRegistration();
+    const {mutate: regUser} = useRegistration();
 
     const formik = useFormik({
         initialValues,
-        validationSchema:loginAndRegistrationFormValidation,
+        validationSchema: loginAndRegistrationFormValidation,
         onSubmit: submitHandler
     })
     const submitForm = formik.submitForm;
 
     function submitHandler(values: IUser) {
-        regUser(values,{
-            onError:()=>toast({
+        regUser(values, {
+            onError: () => toast({
                 title: 'Ошибка при создании аккаунта',
                 status: 'error',
                 duration: 5000,
             }),
-            onSuccess:({message})=>toast({
+            onSuccess: ({message}) => toast({
                 title: 'Аккаунт создан',
                 description: `${message}`,
                 status: 'success',
@@ -41,7 +41,7 @@ const RegistrationForm: FC = () => {
             <FormikProvider value={formik}>
                 <FormikInput name={'username'} id={'username'} label={"Имя пользователя"}/>
                 <FormikPasswordInput name={'password'} id={'password'} label={"Пароль"}/>
-                <Button w={['70%','40%']} mt='30px' onClick={submitForm}>Регистрация</Button>
+                <Button w={['70%', '40%']} mt='30px' onClick={submitForm}>Регистрация</Button>
             </FormikProvider>
         </Box>
     )

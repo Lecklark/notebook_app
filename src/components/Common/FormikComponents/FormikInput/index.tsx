@@ -5,17 +5,17 @@ import {FormControl, FormErrorMessage, FormLabel, Input, InputGroup, InputRightE
 import {CheckIcon} from "@chakra-ui/icons";
 import {FormikInputProps} from "../../../../types";
 
-const FormikInput:FC<FormikInputProps>=({name,id,label,...rest})=>{
+const FormikInput: FC<FormikInputProps> = ({name, id, label, ...rest}) => {
 
-    const [field, meta, { setValue, setTouched }] = useField(name);
+    const [field, meta, {setValue, setTouched}] = useField(name);
 
-    const errorMessage:string|null = useMemo(()=>{
+    const errorMessage: string | null = useMemo(() => {
         if (meta.error) {
-            const message = meta.value==='' ? FIELD_REQUIRED_ERROR_MESSAGE : meta.error;
+            const message = meta.value === '' ? FIELD_REQUIRED_ERROR_MESSAGE : meta.error;
             return message
         }
         return null
-    },[meta.error,meta.value])
+    }, [meta.error, meta.value])
 
     return (
         <FormControl
@@ -40,7 +40,7 @@ const FormikInput:FC<FormikInputProps>=({name,id,label,...rest})=>{
                         setTouched(true);
                     }}
                 />
-                <InputRightElement children={<CheckIcon color='green.500' />}
+                <InputRightElement children={<CheckIcon color='green.500'/>}
                                    opacity={(!meta.error && meta.touched) ? '1' : '0'}
                 />
             </InputGroup>
