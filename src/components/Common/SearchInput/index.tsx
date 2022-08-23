@@ -2,15 +2,15 @@ import {ChangeEventHandler, FC} from "react";
 import {Input, InputGroup, InputRightElement} from "@chakra-ui/react";
 import {Icon, SearchIcon} from "@chakra-ui/icons";
 
-interface SearchInputProps{
+interface SearchInputProps {
     placeholder?: string;
-    value:string;
-    onChange:ChangeEventHandler<HTMLInputElement>;
+    value: string;
+    onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
-const SearchInput:FC<SearchInputProps> = ({value,onChange,placeholder}) => {
+const SearchInput: FC<SearchInputProps> = ({value, onChange, placeholder}) => {
 
-    return(
+    return (
         <>
             <InputGroup>
                 <Input

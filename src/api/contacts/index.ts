@@ -32,6 +32,15 @@ export const createContact = async (contact:IContact) => {
     }
 }
 
+export const updateContact = async (contact:IContact,contactId:number) => {
+    try{
+        const {data}:{data:IContact[]} = await api.put(`/api/contacts/${contactId}`,contact);
+        return data
+    }catch (e) {
+        throw e
+    }
+}
+
 export const deleteContact = async (contactId:number) => {
     try{
         const {data}:{data:IContact[]} = await api.delete(`/api/contacts/${contactId}`);

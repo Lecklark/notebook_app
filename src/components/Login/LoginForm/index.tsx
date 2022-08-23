@@ -17,14 +17,14 @@ const LoginForm: FC = () => {
     const toast = useToast();
     const formik = useFormik({
         initialValues,
-        validationSchema:loginAndRegistrationFormValidation,
+        validationSchema: loginAndRegistrationFormValidation,
         onSubmit: submitHandler
     })
 
     function submitHandler(values: IUser) {
-        loginUser(values,{
-            onSuccess:({token})=>dispatch(login(token)),
-            onError:()=>toast({
+        loginUser(values, {
+            onSuccess: ({token}) => dispatch(login(token)),
+            onError: () => toast({
                 title: 'Ошибка при входе в аккаунт',
                 status: 'error',
                 duration: 5000,
@@ -39,7 +39,7 @@ const LoginForm: FC = () => {
             <FormikProvider value={formik}>
                 <FormikInput name={'username'} id={'username'} label={"Имя пользователя"}/>
                 <FormikPasswordInput name={'password'} id={'password'} label={"Пароль"}/>
-                <Button w={['70%','40%']} mt='30px' onClick={submitForm}>Войти</Button>
+                <Button w={['70%', '40%']} mt='30px' onClick={submitForm}>Войти</Button>
             </FormikProvider>
         </Box>
     )

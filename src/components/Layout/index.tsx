@@ -3,14 +3,14 @@ import Header from "./Header";
 import {Box} from "@chakra-ui/react";
 
 interface LayoutProps {
-    children:ReactNode,
+    children: ReactNode,
 }
 
-const Layout:FC<LayoutProps> = ({children})=>{
+const Layout: FC<LayoutProps> = ({children}) => {
 
-    return(
+    return (
         <Box minH='100vh' display='flex' flexDirection='column'>
-            <Header />
+            <Header/>
             {children}
         </Box>
     )

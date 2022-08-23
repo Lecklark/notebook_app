@@ -11,23 +11,23 @@ import {
 } from "@chakra-ui/react";
 import {DeleteIcon} from "@chakra-ui/icons";
 
-interface DeleteModalProps{
-    title:string,
-    deleteBtnHandler:()=>void,
-    isOpen:boolean,
-    onOpen:()=>void,
-    onClose:()=>void,
+interface DeleteModalProps {
+    title: string,
+    deleteBtnHandler: () => void,
+    isOpen: boolean,
+    onOpen: () => void,
+    onClose: () => void,
 }
 
-const DeleteModal:FC<DeleteModalProps> = ({
-        title,
-        deleteBtnHandler,
-        isOpen,
-        onOpen,
-        onClose
-    }) => {
+const DeleteModal: FC<DeleteModalProps> = ({
+                                               title,
+                                               deleteBtnHandler,
+                                               isOpen,
+                                               onOpen,
+                                               onClose
+                                           }) => {
 
-    return(
+    return (
         <>
             <IconButton
                 aria-label='deleteIcon'
@@ -45,8 +45,8 @@ const DeleteModal:FC<DeleteModalProps> = ({
                     <ModalHeader mb='10px'>{title}</ModalHeader>
                     <ModalCloseButton/>
                     <ModalFooter display='grid' gridTemplateColumns='1fr 1fr' gridColumnGap='8px'>
-                        <Button   onClick={onClose}>Cancel</Button>
-                        <Button   onClick={deleteBtnHandler}>Delete</Button>
+                        <Button onClick={onClose}>Cancel</Button>
+                        <Button onClick={deleteBtnHandler}>Delete</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

@@ -13,14 +13,14 @@ function App() {
         <div className="App">
             <Layout>
                 <Routes>
-                    <Route path={MAIN_PAGE} element={<Main />} />
-                    <Route path={REGISTRATION_PAGE} element={<Registration/>} />
-                    <Route path={LOGIN_PAGE} element={<Login />} />
+                    <Route path={MAIN_PAGE} element={<Main/>}/>
+                    <Route path={REGISTRATION_PAGE} element={<Registration/>}/>
+                    <Route path={LOGIN_PAGE} element={<Login/>}/>
                     <Route path={CONTACTS_PAGE} element={
                         <PrivateRoute>
-                            <Contacts />
+                            <Contacts/>
                         </PrivateRoute>
-                    } />
+                    }/>
                 </Routes>
             </Layout>
         </div>

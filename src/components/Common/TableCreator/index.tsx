@@ -3,27 +3,27 @@ import {Column, useTable} from 'react-table';
 import {FC} from "react";
 import {TableBodyProps, TableColumnHeaderProps, TableHeadProps, TableProps, TableRowProps} from "@chakra-ui/table";
 
-export interface TableStyles{
-    tr:TableRowProps;
-    th:TableColumnHeaderProps;
-    thead:TableHeadProps;
-    tbody:TableBodyProps;
-    td:TableCellProps;
-    table:TableProps;
+export interface TableStyles {
+    tr?: TableRowProps;
+    th?: TableColumnHeaderProps;
+    thead?: TableHeadProps;
+    tbody?: TableBodyProps;
+    td?: TableCellProps;
+    table?: TableProps;
 }
 
-interface TableCreatorProps{
-    columns:Column[];
-    data:{}[];
-    styles?:TableStyles;
+interface TableCreatorProps {
+    columns: Column[];
+    data: {}[];
+    styles?: TableStyles;
 }
 
-const TableCreator:FC<TableCreatorProps> = ({
-                                         columns,
-                                         data,
-                                         styles={},
-                                     }) => {
-    const {tr, th, thead, table, tbody, td } = styles;
+const TableCreator: FC<TableCreatorProps> = ({
+                                                 columns,
+                                                 data,
+                                                 styles = {},
+                                             }) => {
+    const {tr, th, thead, table, tbody, td} = styles;
 
     const {
         getTableProps,
