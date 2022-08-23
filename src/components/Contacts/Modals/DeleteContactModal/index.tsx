@@ -29,7 +29,7 @@ const DeleteContactModal: FC<DeleteContactModalProps> = ({name, id}) => {
             isOpen={isOpen}
             onOpen={onOpen}
             onClose={onClose}
-            title={`Удалить работника ${name}?`}
+            title={`Удалить контакт ${name}?`}
             deleteBtnHandler={deleteHandler}
         />
     )
