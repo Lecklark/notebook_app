@@ -2,37 +2,41 @@ import React, { ChangeEvent } from 'react';
 import TableRow from '../../../../common/TableComponents/TableRow';
 import TableCell from '../../../../common/TableComponents/TableCell';
 import { useAppDispatch, useAppSelector } from '../../../../../store/hooks';
-import { allCompaniesInState, selectedCompaniesInState } from '../../../../../store/selectors';
 import {
-  deleteSelectedCompanies,
-  deselectAllCompanies,
-  selectAllCompanies,
+  selectedCompaniesInState,
+  selectedWorkersInState,
+} from '../../../../../store/selectors';
+import {
+  deleteSelectedWorkers,
+  deselectAllWorkers,
+  selectAllWorkers,
 } from '../../../../../store/slices/companiesSlice';
 
 function StaffTableHeader() {
-  const companiesArray = useAppSelector(allCompaniesInState);
   const selectedCompanies = useAppSelector(selectedCompaniesInState);
-  const checkboxChecked = companiesArray.length === selectedCompanies.length;
+  const selectedWorkers = useAppSelector(selectedWorkersInState);
+  const totalWorkersAmount = selectedCompanies.reduce((prev, curr) => prev + curr.staff.length, 0);
+  const checkboxChecked = selectedWorkers.length === totalWorkersAmount;
   const dispatch = useAppDispatch();
 
   function checkboxClick(e: ChangeEvent<HTMLInputElement>) {
     const { checked } = e.target;
     if (checked) {
-      dispatch(selectAllCompanies());
+      dispatch(selectAllWorkers());
     } else {
-      dispatch(deselectAllCompanies());
+      dispatch(deselectAllWorkers());
     }
   }
 
   function deleteClick() {
-    dispatch(deleteSelectedCompanies());
+    dispatch(deleteSelectedWorkers());
   }
 
   return (
     <thead>
       <TableRow>
         <TableCell>
-          {companiesArray.length > 1 && (
+          {totalWorkersAmount > 1 && (
           <input type="checkbox" checked={checkboxChecked} onChange={checkboxClick} />
           )}
         </TableCell>
@@ -46,7 +50,7 @@ function StaffTableHeader() {
           Должность
         </TableCell>
         <TableCell>
-          {selectedCompanies.length > 0 && (
+          {selectedWorkers.length > 0 && (
           <button type="button" onClick={deleteClick}>
             Удалить
           </button>

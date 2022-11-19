@@ -1,67 +1,72 @@
 import React, { useState, ChangeEvent } from 'react';
-import { Company } from '../../../../../types';
+import { ID, Worker } from '../../../../../types';
 import { useAppDispatch, useAppSelector } from '../../../../../store/hooks';
-import { selectedCompaniesInState } from '../../../../../store/selectors';
+import { selectedWorkersInState } from '../../../../../store/selectors';
 import {
-  addNewCompany,
-  deselectCompany,
-  selectCompany,
-  updateCompany,
+  addWorker,
+  deselectWorker,
+  selectWorker,
+  updateWorker,
 } from '../../../../../store/slices/companiesSlice';
 import TableRow from '../../../../common/TableComponents/TableRow';
 import TableCell from '../../../../common/TableComponents/TableCell';
 import TableEditableCell from '../../../../common/TableComponents/TableEditableCell';
+import useForm from '../../../../../features/hooks/useForm';
 
-export interface CompanyTableRowProps {
-  company?: Company
+export interface StaffTableRowProps {
+  worker?: Worker,
+  companyId: ID
 }
 
-function StaffTableRow({ company }:CompanyTableRowProps) {
-  const selectedCompanies = useAppSelector(selectedCompaniesInState);
-  const isSelected = !!selectedCompanies.find((selected) => selected.id === company?.id);
+export interface IForm {
+  firstName: string,
+  lastName: string,
+  position: string
+}
+
+function StaffTableRow({ worker, companyId }:StaffTableRowProps) {
+  const selectedWorkers = useAppSelector(selectedWorkersInState);
+  const isSelected = !!selectedWorkers.find((selected) => selected.id === worker?.id);
   const dispatch = useAppDispatch();
-  const isAddCompanyRow = !company;
-  const initialState = {
-    name: company?.name ? company.name : '',
-    address: company?.address ? company.address : '',
-  };
+  const isAddWorkerRow = !worker;
 
-  const [state, setState] = useState(initialState);
-  const [isEditMode, setEditMode] = useState<boolean>(isAddCompanyRow);
+  const { values: state, changeFieldValue, resetForm } = useForm<IForm>({
+    firstName: worker?.firstName ? worker.firstName : '',
+    lastName: worker?.lastName ? worker.lastName : '',
+    position: worker?.position ? worker.position : '',
+  });
 
-  function changeCompanyField(fieldName: string) {
-    return (e: ChangeEvent<HTMLInputElement>) => {
-      setState((prev) => ({ ...prev, [fieldName]: e.target.value }));
-    };
-  }
+  const [isEditMode, setEditMode] = useState<boolean>(isAddWorkerRow);
 
   function checkboxClickHandler(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.checked;
-    if (isAddCompanyRow) return;
+    if (isAddWorkerRow) return;
     if (value) {
-      dispatch(selectCompany(company));
+      dispatch(selectWorker(worker));
     } else {
-      dispatch(deselectCompany(company));
+      dispatch(deselectWorker(worker));
     }
   }
 
-  function buttonsCellClick() {
-    if (isAddCompanyRow) {
-      const newCompany = {
-        name: state.name,
-        address: state.address,
+  function saveClickHandler() {
+    if (isAddWorkerRow) {
+      const toSend = {
+        worker: {
+          companyId,
+          ...state,
+        },
+        companyId,
       };
-      dispatch(addNewCompany(newCompany));
-      setState(initialState);
+      dispatch(addWorker(toSend));
+      resetForm();
       return;
     }
     if (isEditMode) {
-      const updatedCompany = {
-        ...company,
-        name: state.name,
-        address: state.address,
+      const updatedWorker = {
+        ...worker,
+        ...state,
       };
-      dispatch(updateCompany(updatedCompany));
+      dispatch(updateWorker(updatedWorker));
       setEditMode(false);
     } else {
       setEditMode(true);
@@ -71,16 +76,14 @@ function StaffTableRow({ company }:CompanyTableRowProps) {
   return (
     <TableRow selected={isSelected}>
       <TableCell>
-        {!isAddCompanyRow && (
+        {!isAddWorkerRow && (
           <input type="checkbox" checked={isSelected} onChange={checkboxClickHandler} />
         )}
       </TableCell>
-      <TableEditableCell isEditMode={isEditMode} value={state.name} onChange={changeCompanyField('name')} />
-      <TableCell>
-        {company?.staff?.length ?? '0'}
-      </TableCell>
-      <TableEditableCell isEditMode={isEditMode} value={state.address} onChange={changeCompanyField('address')} />
-      <TableCell onClick={buttonsCellClick}>
+      <TableEditableCell isEditMode={isEditMode} value={state.firstName} onChange={changeFieldValue('firstName')} />
+      <TableEditableCell isEditMode={isEditMode} value={state.lastName} onChange={changeFieldValue('lastName')} />
+      <TableEditableCell isEditMode={isEditMode} value={state.position} onChange={changeFieldValue('position')} />
+      <TableCell onClick={saveClickHandler}>
         {isEditMode ? 'Сохранить' : 'Редактировать'}
       </TableCell>
     </TableRow>

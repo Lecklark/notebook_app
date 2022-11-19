@@ -11,9 +11,16 @@ import {
 import TableCell from '../../../../common/TableComponents/TableCell';
 import TableRow from '../../../../common/TableComponents/TableRow';
 import TableEditableCell from '../../../../common/TableComponents/TableEditableCell';
+import useForm from '../../../../../features/hooks/useForm';
+import { IForm } from '../../StaffTable/StaffTableRow';
 
 export interface CompanyTableRowProps {
   company?: Company
+}
+
+export interface ICompanyForm {
+  name: string
+  address: string
 }
 
 function CompanyTableRow({ company }:CompanyTableRowProps) {
@@ -21,19 +28,13 @@ function CompanyTableRow({ company }:CompanyTableRowProps) {
   const isSelected = !!selectedCompanies.find((selected) => selected.id === company?.id);
   const dispatch = useAppDispatch();
   const isAddCompanyRow = !company;
-  const initialState = {
+
+  const { values: state, changeFieldValue, resetForm } = useForm<ICompanyForm>({
     name: company?.name ? company.name : '',
     address: company?.address ? company.address : '',
-  };
+  });
 
-  const [state, setState] = useState(initialState);
   const [isEditMode, setEditMode] = useState<boolean>(isAddCompanyRow);
-
-  function changeCompanyField(fieldName: string) {
-    return (e: ChangeEvent<HTMLInputElement>) => {
-      setState((prev) => ({ ...prev, [fieldName]: e.target.value }));
-    };
-  }
 
   function checkboxClickHandler(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.checked;
@@ -48,18 +49,17 @@ function CompanyTableRow({ company }:CompanyTableRowProps) {
   function buttonsCellClick() {
     if (isAddCompanyRow) {
       const newCompany = {
-        name: state.name,
-        address: state.address,
+        ...state,
+        staff: [],
       };
       dispatch(addNewCompany(newCompany));
-      setState(initialState);
+      resetForm();
       return;
     }
     if (isEditMode) {
       const updatedCompany = {
         ...company,
-        name: state.name,
-        address: state.address,
+        ...state,
       };
       dispatch(updateCompany(updatedCompany));
       setEditMode(false);
@@ -75,11 +75,11 @@ function CompanyTableRow({ company }:CompanyTableRowProps) {
           <input type="checkbox" checked={isSelected} onChange={checkboxClickHandler} />
         )}
       </TableCell>
-      <TableEditableCell isEditMode={isEditMode} value={state.name} onChange={changeCompanyField('name')} />
+      <TableEditableCell isEditMode={isEditMode} value={state.name} onChange={changeFieldValue('name')} />
       <TableCell>
         {company?.staff?.length ?? 0}
       </TableCell>
-      <TableEditableCell isEditMode={isEditMode} value={state.address} onChange={changeCompanyField('address')} />
+      <TableEditableCell isEditMode={isEditMode} value={state.address} onChange={changeFieldValue('address')} />
       <TableCell onClick={buttonsCellClick}>
         {isEditMode ? 'Сохранить' : 'Редактировать'}
       </TableCell>
