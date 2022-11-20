@@ -1,5 +1,4 @@
 import React, { ChangeEvent } from 'react';
-import TableRow from '../../../../common/TableComponents/TableRow';
 import TableCell from '../../../../common/TableComponents/TableCell';
 import { useAppDispatch, useAppSelector } from '../../../../../store/hooks';
 import { allCompaniesInState, selectedCompaniesInState } from '../../../../../store/selectors';
@@ -8,6 +7,8 @@ import {
   deselectAllCompanies,
   selectAllCompanies,
 } from '../../../../../store/slices/companiesSlice';
+import TableHead from '../../../../common/TableComponents/TableHead';
+import HeaderRow from '../../../../common/TableComponents/HeaderRow';
 
 function CompanyTableHeader() {
   const companiesArray = useAppSelector(allCompaniesInState);
@@ -29,8 +30,8 @@ function CompanyTableHeader() {
   }
 
   return (
-    <thead>
-      <TableRow>
+    <TableHead>
+      <HeaderRow>
         <TableCell>
           {companiesArray.length > 1 && (
           <input type="checkbox" checked={checkboxChecked} onChange={checkboxClick} />
@@ -52,8 +53,8 @@ function CompanyTableHeader() {
           </button>
           )}
         </TableCell>
-      </TableRow>
-    </thead>
+      </HeaderRow>
+    </TableHead>
   );
 }
 
