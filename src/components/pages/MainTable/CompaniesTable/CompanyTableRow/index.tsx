@@ -12,7 +12,7 @@ import TableCell from '../../../../common/TableComponents/TableCell';
 import TableRow from '../../../../common/TableComponents/TableRow';
 import TableEditableCell from '../../../../common/TableComponents/TableEditableCell';
 import useForm from '../../../../../features/hooks/useForm';
-import { IForm } from '../../StaffTable/StaffTableRow';
+import ButtonsCell from '../../UI/ButtonsCell';
 
 export interface CompanyTableRowProps {
   company?: Company
@@ -77,12 +77,10 @@ function CompanyTableRow({ company }:CompanyTableRowProps) {
       </TableCell>
       <TableEditableCell isEditMode={isEditMode} value={state.name} onChange={changeFieldValue('name')} />
       <TableCell>
-        {company?.staff?.length ?? 0}
+        {company?.staff?.length}
       </TableCell>
       <TableEditableCell isEditMode={isEditMode} value={state.address} onChange={changeFieldValue('address')} />
-      <TableCell onClick={buttonsCellClick}>
-        {isEditMode ? 'Сохранить' : 'Редактировать'}
-      </TableCell>
+      <ButtonsCell isEditMode={isEditMode} onClick={buttonsCellClick} />
     </TableRow>
   );
 }

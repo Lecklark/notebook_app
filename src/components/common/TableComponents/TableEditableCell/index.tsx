@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from 'react';
+import styled from 'styled-components';
 import TableCell from '../TableCell';
 
 export interface TableEditableCellProps {
@@ -7,11 +8,15 @@ export interface TableEditableCellProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
+const Input = styled.input`
+  max-width: 150px;
+`;
+
 function TableEditableCell({ isEditMode, value, onChange }:TableEditableCellProps) {
   return (
     <TableCell>
       {isEditMode
-        ? <input value={value} onChange={onChange} />
+        ? <Input value={value} onChange={onChange} />
         : value}
     </TableCell>
   );

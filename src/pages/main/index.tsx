@@ -6,6 +6,7 @@ const PageWrapper = styled.section`
   padding: 50px;
   width: 100vw;
   height: 100vh;
+  background-color: rgb(244, 241, 232);
 `;
 
 function Main() {

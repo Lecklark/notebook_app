@@ -11,6 +11,8 @@ import {
   deselectAllWorkers,
   selectAllWorkers,
 } from '../../../../../store/slices/companiesSlice';
+import TableHead from '../../../../common/TableComponents/TableHead';
+import HeaderRow from '../../../../common/TableComponents/HeaderRow';
 
 function StaffTableHeader() {
   const selectedCompanies = useAppSelector(selectedCompaniesInState);
@@ -33,8 +35,8 @@ function StaffTableHeader() {
   }
 
   return (
-    <thead>
-      <TableRow>
+    <TableHead>
+      <HeaderRow>
         <TableCell>
           {totalWorkersAmount > 1 && (
           <input type="checkbox" checked={checkboxChecked} onChange={checkboxClick} />
@@ -56,8 +58,8 @@ function StaffTableHeader() {
           </button>
           )}
         </TableCell>
-      </TableRow>
-    </thead>
+      </HeaderRow>
+    </TableHead>
   );
 }
 

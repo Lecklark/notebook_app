@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Company, Worker } from '../../../types';
 import { createNewRandom } from '../../../features/helpers';
 import { AddCompanyPayload, AddWorkerPayload } from './types';
+import { initialData } from '../../../constants';
 
 export interface CompaniesState {
   selectedCompanies: Company[]
@@ -12,7 +13,7 @@ export interface CompaniesState {
 const initialState: CompaniesState = {
   selectedCompanies: [],
   selectedWorkers: [],
-  allCompanies: [],
+  allCompanies: initialData,
 };
 
 export const companiesSlice = createSlice({

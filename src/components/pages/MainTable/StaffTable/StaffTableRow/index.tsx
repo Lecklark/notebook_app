@@ -12,6 +12,7 @@ import TableRow from '../../../../common/TableComponents/TableRow';
 import TableCell from '../../../../common/TableComponents/TableCell';
 import TableEditableCell from '../../../../common/TableComponents/TableEditableCell';
 import useForm from '../../../../../features/hooks/useForm';
+import ButtonsCell from '../../UI/ButtonsCell';
 
 export interface StaffTableRowProps {
   worker?: Worker,
@@ -83,9 +84,7 @@ function StaffTableRow({ worker, companyId }:StaffTableRowProps) {
       <TableEditableCell isEditMode={isEditMode} value={state.firstName} onChange={changeFieldValue('firstName')} />
       <TableEditableCell isEditMode={isEditMode} value={state.lastName} onChange={changeFieldValue('lastName')} />
       <TableEditableCell isEditMode={isEditMode} value={state.position} onChange={changeFieldValue('position')} />
-      <TableCell onClick={saveClickHandler}>
-        {isEditMode ? 'Сохранить' : 'Редактировать'}
-      </TableCell>
+      <ButtonsCell isEditMode={isEditMode} onClick={saveClickHandler} />
     </TableRow>
   );
 }
