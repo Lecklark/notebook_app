@@ -75,9 +75,21 @@ export const StaffTableRow: FC<StaffTableRowProps> = memo(({ worker, companyId }
           <input type="checkbox" checked={isSelected} onChange={checkboxClickHandler} />
         )}
       </TableCell>
-      <TableEditableCell isEditMode={isEditMode} value={values.firstName} onChange={changeFieldValue('firstName')} />
-      <TableEditableCell isEditMode={isEditMode} value={values.lastName} onChange={changeFieldValue('lastName')} />
-      <TableEditableCell isEditMode={isEditMode} value={values.position} onChange={changeFieldValue('position')} />
+      <TableEditableCell
+        isEditMode={isEditMode}
+        value={values.firstName}
+        onChange={changeFieldValue('firstName')}
+      />
+      <TableEditableCell
+        isEditMode={isEditMode}
+        value={values.lastName}
+        onChange={changeFieldValue('lastName')}
+      />
+      <TableEditableCell
+        isEditMode={isEditMode}
+        value={values.position}
+        onChange={changeFieldValue('position')}
+      />
       <ButtonsCell isEditMode={isEditMode} onClick={saveClickHandler} />
     </TableRow>
   );

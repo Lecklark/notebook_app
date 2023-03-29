@@ -11,7 +11,6 @@ const TableWrapper = styled.div`
   margin: auto;
   align-items: flex-start;
   background-color: rgb(244, 241, 232);
-  overflow: hidden;
   gap: 20px;
 `;
 

@@ -8,7 +8,7 @@ import CompanyTableRow from '@components/widgets/companies-table/company-table-r
 
 const LastRowWrapper = styled.tbody`
   position: sticky;
-  bottom: 0px;
+  bottom: 0;
   background-color: rgb(252, 251, 248);
 `;
 

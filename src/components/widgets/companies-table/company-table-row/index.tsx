@@ -29,10 +29,12 @@ export const CompanyTableRow:FC<CompanyTableRowProps> = memo(({ company }:Compan
   const dispatch = useAppDispatch();
   const isAddCompanyRow = !company;
 
-  const { values: state, changeFieldValue, resetForm } = useForm<CompanyFormValues>({
+  const formInitialValues: CompanyFormValues = {
     name: company?.name ? company.name : '',
     address: company?.address ? company.address : '',
-  });
+  };
+
+  const { values, changeFieldValue, resetForm } = useForm<CompanyFormValues>(formInitialValues);
 
   const [isEditMode, setEditMode] = useState<boolean>(isAddCompanyRow);
 
@@ -49,7 +51,7 @@ export const CompanyTableRow:FC<CompanyTableRowProps> = memo(({ company }:Compan
   function buttonsCellClick() {
     if (isAddCompanyRow) {
       const newCompany = {
-        ...state,
+        ...values,
         staff: [],
       };
       dispatch(addNewCompany(newCompany));
@@ -59,7 +61,7 @@ export const CompanyTableRow:FC<CompanyTableRowProps> = memo(({ company }:Compan
     if (isEditMode) {
       const updatedCompany = {
         ...company,
-        ...state,
+        ...values,
       };
       dispatch(updateCompany(updatedCompany));
       setEditMode(false);
@@ -75,11 +77,19 @@ export const CompanyTableRow:FC<CompanyTableRowProps> = memo(({ company }:Compan
           <input type="checkbox" checked={isSelected} onChange={checkboxClickHandler} />
         )}
       </TableCell>
-      <TableEditableCell isEditMode={isEditMode} value={state.name} onChange={changeFieldValue('name')} />
+      <TableEditableCell
+        isEditMode={isEditMode}
+        value={values.name}
+        onChange={changeFieldValue('name')}
+      />
       <TableCell>
         {company?.staff?.length}
       </TableCell>
-      <TableEditableCell isEditMode={isEditMode} value={state.address} onChange={changeFieldValue('address')} />
+      <TableEditableCell
+        isEditMode={isEditMode}
+        value={values.address}
+        onChange={changeFieldValue('address')}
+      />
       <ButtonsCell isEditMode={isEditMode} onClick={buttonsCellClick} />
     </TableRow>
   );
