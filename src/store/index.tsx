@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import companiesReducer from './slices/companiesSlice';
+import companiesReducer from './slices/companies-slice';
 
 const rootReducer = combineReducers({
   companies: companiesReducer,
