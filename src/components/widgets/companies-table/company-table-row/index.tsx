@@ -1,6 +1,8 @@
-import React, { useState, ChangeEvent, FC } from 'react';
+import React, {
+  useState, ChangeEvent, FC, memo,
+} from 'react';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { selectedCompaniesInState } from '@store/selectors';
+import { companyIsSelectedInState } from '@store/selectors';
 import { useForm } from '@lib/hooks';
 import {
   addNewCompany,
@@ -14,6 +16,7 @@ import {
   TableEditableCell,
   TableRow,
 } from '@components/shared/table-components';
+import equal from 'fast-deep-equal/react';
 import { CompanyTableRowProps } from './types';
 
 export type CompanyFormValues = {
@@ -21,9 +24,8 @@ export type CompanyFormValues = {
   address: string
 }
 
-export const CompanyTableRow:FC<CompanyTableRowProps> = ({ company }:CompanyTableRowProps) => {
-  const selectedCompanies = useAppSelector(selectedCompaniesInState);
-  const isSelected = !!selectedCompanies.find((selected) => selected.id === company?.id);
+export const CompanyTableRow:FC<CompanyTableRowProps> = memo(({ company }:CompanyTableRowProps) => {
+  const isSelected = useAppSelector(companyIsSelectedInState(company?.id));
   const dispatch = useAppDispatch();
   const isAddCompanyRow = !company;
 
@@ -81,6 +83,6 @@ export const CompanyTableRow:FC<CompanyTableRowProps> = ({ company }:CompanyTabl
       <ButtonsCell isEditMode={isEditMode} onClick={buttonsCellClick} />
     </TableRow>
   );
-};
+}, equal);
 
 export default CompanyTableRow;

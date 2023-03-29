@@ -1,6 +1,10 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, memo } from 'react';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { selectedCompaniesInState, selectedWorkersInState } from '@store/selectors';
+import {
+  isAllWorkersSelectedInState,
+  moreThanOneSelectedWorkerInState,
+  moreThanOneWorkerInSelectedCompaniesInState,
+} from '@store/selectors';
 import {
   deleteSelectedWorkers,
   deselectAllWorkers,
@@ -8,11 +12,11 @@ import {
 } from '@store/slices/companies-slice';
 import { HeaderRow, TableCell, TableHead } from '@components/shared/table-components';
 
-export const StaffTableHeader = () => {
-  const selectedCompanies = useAppSelector(selectedCompaniesInState);
-  const selectedWorkers = useAppSelector(selectedWorkersInState);
-  const totalWorkersAmount = selectedCompanies.reduce((prev, curr) => prev + curr.staff.length, 0);
-  const checkboxChecked = selectedWorkers.length === totalWorkersAmount;
+export const StaffTableHeader = memo(() => {
+  const checkboxChecked = useAppSelector(isAllWorkersSelectedInState);
+  const showDeleteButton = useAppSelector(moreThanOneSelectedWorkerInState);
+  const showCheckbox = useAppSelector(moreThanOneWorkerInSelectedCompaniesInState);
+
   const dispatch = useAppDispatch();
 
   function checkboxClick(e: ChangeEvent<HTMLInputElement>) {
@@ -32,9 +36,10 @@ export const StaffTableHeader = () => {
     <TableHead>
       <HeaderRow>
         <TableCell>
-          {totalWorkersAmount > 1 && (
-          <input type="checkbox" checked={checkboxChecked} onChange={checkboxClick} />
+          {showCheckbox && (
+            <input type="checkbox" checked={checkboxChecked} onChange={checkboxClick} />
           )}
+
         </TableCell>
         <TableCell>
           Имя
@@ -46,7 +51,7 @@ export const StaffTableHeader = () => {
           Должность
         </TableCell>
         <TableCell>
-          {selectedWorkers.length > 0 && (
+          {showDeleteButton && (
           <button type="button" onClick={deleteClick}>
             Удалить
           </button>
@@ -55,4 +60,4 @@ export const StaffTableHeader = () => {
       </HeaderRow>
     </TableHead>
   );
-};
+});

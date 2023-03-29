@@ -1,6 +1,10 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, memo } from 'react';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { allCompaniesInState, selectedCompaniesInState } from '@store/selectors';
+import {
+  isAllCompaniesSelectedInState,
+  moreThanOneCompanyInState,
+  moreThanOneSelectedCompanyInState,
+} from '@store/selectors';
 import {
   deleteSelectedCompanies,
   deselectAllCompanies,
@@ -8,10 +12,10 @@ import {
 } from '@store/slices/companies-slice';
 import { HeaderRow, TableCell, TableHead } from '@components/shared/table-components';
 
-export const CompanyTableHeader = () => {
-  const companiesArray = useAppSelector(allCompaniesInState);
-  const selectedCompanies = useAppSelector(selectedCompaniesInState);
-  const checkboxChecked = companiesArray.length === selectedCompanies.length;
+export const CompanyTableHeader = memo(() => {
+  const checkboxChecked = useAppSelector(isAllCompaniesSelectedInState);
+  const showCheckbox = useAppSelector(moreThanOneCompanyInState);
+  const showDeleteButton = useAppSelector(moreThanOneSelectedCompanyInState);
   const dispatch = useAppDispatch();
 
   function checkboxClick(e: ChangeEvent<HTMLInputElement>) {
@@ -31,7 +35,7 @@ export const CompanyTableHeader = () => {
     <TableHead>
       <HeaderRow>
         <TableCell>
-          {companiesArray.length > 1 && (
+          {showCheckbox && (
           <input type="checkbox" checked={checkboxChecked} onChange={checkboxClick} />
           )}
         </TableCell>
@@ -45,7 +49,7 @@ export const CompanyTableHeader = () => {
           Адрес
         </TableCell>
         <TableCell>
-          {selectedCompanies.length > 0 && (
+          {showDeleteButton && (
           <button type="button" onClick={deleteClick}>
             Удалить
           </button>
@@ -54,6 +58,6 @@ export const CompanyTableHeader = () => {
       </HeaderRow>
     </TableHead>
   );
-};
+});
 
 export default CompanyTableHeader;

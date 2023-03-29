@@ -1,7 +1,9 @@
-import React, { useState, ChangeEvent, FC } from 'react';
+import React, {
+  useState, ChangeEvent, FC, memo,
+} from 'react';
 import { useForm } from '@lib/hooks';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { selectedWorkersInState, workerIsSelectedInState } from '@store/selectors';
+import { workerIsSelectedInState } from '@store/selectors';
 import {
   addWorker,
   deselectWorker,
@@ -16,16 +18,18 @@ import {
 } from '@components/shared/table-components';
 import { StaffFormValues, StaffTableRowProps } from './types';
 
-export const StaffTableRow: FC<StaffTableRowProps> = ({ worker, companyId }) => {
+export const StaffTableRow: FC<StaffTableRowProps> = memo(({ worker, companyId }) => {
   const isSelected = useAppSelector(workerIsSelectedInState(worker?.id));
   const dispatch = useAppDispatch();
   const isAddWorkerRow = !worker;
 
-  const { values: state, changeFieldValue, resetForm } = useForm<StaffFormValues>({
+  const formInitialValues: StaffFormValues = {
     firstName: worker?.firstName ? worker.firstName : '',
     lastName: worker?.lastName ? worker.lastName : '',
     position: worker?.position ? worker.position : '',
-  });
+  };
+
+  const { values, changeFieldValue, resetForm } = useForm<StaffFormValues>(formInitialValues);
 
   const [isEditMode, setEditMode] = useState<boolean>(isAddWorkerRow);
 
@@ -44,7 +48,7 @@ export const StaffTableRow: FC<StaffTableRowProps> = ({ worker, companyId }) => 
       const toSend = {
         worker: {
           companyId,
-          ...state,
+          ...values,
         },
         companyId,
       };
@@ -55,7 +59,7 @@ export const StaffTableRow: FC<StaffTableRowProps> = ({ worker, companyId }) => 
     if (isEditMode) {
       const updatedWorker = {
         ...worker,
-        ...state,
+        ...values,
       };
       dispatch(updateWorker(updatedWorker));
       setEditMode(false);
@@ -71,10 +75,10 @@ export const StaffTableRow: FC<StaffTableRowProps> = ({ worker, companyId }) => 
           <input type="checkbox" checked={isSelected} onChange={checkboxClickHandler} />
         )}
       </TableCell>
-      <TableEditableCell isEditMode={isEditMode} value={state.firstName} onChange={changeFieldValue('firstName')} />
-      <TableEditableCell isEditMode={isEditMode} value={state.lastName} onChange={changeFieldValue('lastName')} />
-      <TableEditableCell isEditMode={isEditMode} value={state.position} onChange={changeFieldValue('position')} />
+      <TableEditableCell isEditMode={isEditMode} value={values.firstName} onChange={changeFieldValue('firstName')} />
+      <TableEditableCell isEditMode={isEditMode} value={values.lastName} onChange={changeFieldValue('lastName')} />
+      <TableEditableCell isEditMode={isEditMode} value={values.position} onChange={changeFieldValue('position')} />
       <ButtonsCell isEditMode={isEditMode} onClick={saveClickHandler} />
     </TableRow>
   );
-};
+});
