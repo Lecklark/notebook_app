@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainTable from '../../components/pages/MainTable';
+import MainTable from '@components/pages/main/main-table';
 
 const PageWrapper = styled.section`
   padding: 50px;
@@ -9,12 +9,10 @@ const PageWrapper = styled.section`
   background-color: rgb(244, 241, 232);
 `;
 
-function Main() {
-  return (
-    <PageWrapper>
-      <MainTable />
-    </PageWrapper>
-  );
-}
+export const Main = () => (
+  <PageWrapper>
+    <MainTable />
+  </PageWrapper>
+);
 
 export default Main;
