@@ -43,7 +43,7 @@ export const CompanyTableHeader = memo(() => {
           Название
         </TableCell>
         <TableCell>
-          Количество
+          Количество сотрудников
         </TableCell>
         <TableCell>
           Адрес
