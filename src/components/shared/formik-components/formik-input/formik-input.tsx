@@ -13,7 +13,12 @@ import { FC } from 'react';
 
 import { FormikInputProps } from './types';
 
-export const FormikInput: FC<FormikInputProps> = ({ name, label, rightElement, ...rest }) => {
+export const FormikInput: FC<FormikInputProps> = ({
+  name,
+  label,
+  rightElement,
+  ...rest
+}) => {
   const [field, meta, { setValue, setTouched }] = useField(name);
 
   const rightIcon = rightElement ? rightElement : <CheckIcon color='green.500' />;
