@@ -1,0 +1,29 @@
+import { LOCALES } from './locales';
+
+export type LocaleType = typeof LOCALES[keyof typeof LOCALES];
+
+export type Messages = {
+  [LOCALES.RUSSIAN]: {
+    [key: string]: string;
+  };
+};
+
+export enum MESSAGES {
+  WELCOME_TITLE = 'WELCOME_TITLE',
+  WELCOME_TEXT = 'WELCOME_TEXT',
+  LOGIN_BTN = 'LOGIN_BTN',
+  LOGOUT_BTN = 'LOGOUT_BTN',
+  LOGIN_FORM_TITLE = 'LOGIN_FORM_TITLE',
+  LOGIN_FORM_BTN = 'LOGIN_FORM_BTN',
+  LOGIN_FORM_LINK = 'LOGIN_FORM_LINK',
+  REG_FORM_TITLE = 'REG_FORM_TITLE',
+  REG_FORM_BTN = 'REG_FORM_BTN',
+  REG_FORM_LINK = 'REG_FORM_LINK',
+  EMAIL_INPUT_LABEL = 'EMAIL_INPUT_LABEL',
+  PASSWORD_INPUT_LABEL = 'PASSWORD_INPUT_LABEL',
+  SEARCH_PLACEHOLDER = 'SEARCH_PLACEHOLDER',
+  LOGIN_ERROR = 'LOGIN_ERROR',
+  REG_ERROR = 'REG_ERROR',
+}
+
+export type AllMessages = keyof Record<MESSAGES, string>;
