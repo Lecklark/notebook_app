@@ -5,7 +5,7 @@ import axios, {
   isAxiosError,
 } from 'axios';
 
-import { refreshTokens } from '@/api/auth-service';
+import { authService } from '@/api/auth-service';
 import { BASE_API_URL } from '@/lib/constants';
 import { store } from '@/store';
 import { appActions } from '@/store/slices/app-slice';
@@ -44,7 +44,7 @@ const handleResponseRejected = async (error: AxiosError | Error) => {
       isRetry = true;
       const state = store.getState();
       const refreshToken = state.app.refreshToken;
-      const tokens = await refreshTokens({ refreshToken });
+      const tokens = await authService.refreshTokens({ refreshToken });
       dispatch(appActions.login(tokens));
       isRetry = false;
       return apiProtected.request(originalRequest);
