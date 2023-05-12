@@ -6,7 +6,7 @@ import { useLogin } from '@/api/auth-service';
 import { ROUTES } from '@/lib/constants';
 import { MESSAGES, useI18N } from '@/lib/i18n';
 import { useAppDispatch } from '@/store/hooks';
-import { login } from '@/store/slices/app-slice';
+import { appActions } from '@/store/slices/app-slice';
 
 export const Login = () => {
   const [title, btnText, linkText] = useI18N(
@@ -22,7 +22,7 @@ export const Login = () => {
   const onFormSubmit = async (values: AuthFormValues) => {
     loginUser(values, {
       onSuccess: (tokens) => {
-        dispatch(login(tokens));
+        dispatch(appActions.login(tokens));
       },
       onError: () =>
         toast({

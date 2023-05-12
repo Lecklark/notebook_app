@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { modalIsOpenedInState } from '@/store/selectors';
-import { closeModal, openModal } from '@/store/slices/modals-slice';
+import { modalsActions } from '@/store/slices/modals-slice';
 import { AllModals, ModalsProps } from '@/types';
 
 export const useModalController = (modal: AllModals, modalProps?: ModalsProps) => {
@@ -10,11 +10,11 @@ export const useModalController = (modal: AllModals, modalProps?: ModalsProps) =
   const dispatch = useAppDispatch();
 
   const close = useCallback(() => {
-    dispatch(closeModal());
+    dispatch(modalsActions.closeModal());
   }, []);
 
   const open = useCallback(() => {
-    dispatch(openModal({ modal, props: modalProps }));
+    dispatch(modalsActions.openModal({ modal, props: modalProps }));
   }, [modal, modalProps]);
 
   const api: [boolean, () => void, () => void] = [isOpen, open, close];

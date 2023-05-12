@@ -8,7 +8,7 @@ import { ROUTES } from '@/lib/constants';
 import { MESSAGES, useI18N } from '@/lib/i18n';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { isAuthInState } from '@/store/selectors';
-import { logout } from '@/store/slices/app-slice';
+import { appActions } from '@/store/slices/app-slice';
 
 export const Header: FC = () => {
   const isAuth = useAppSelector(isAuthInState);
@@ -20,7 +20,7 @@ export const Header: FC = () => {
 
   const buttonClickHandler = () => {
     if (isAuth) {
-      dispatch(logout());
+      dispatch(appActions.logout());
     } else {
       navigate(ROUTES.LOGIN_PAGE);
     }

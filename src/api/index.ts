@@ -8,7 +8,7 @@ import axios, {
 import { refreshTokens } from '@/api/auth-service';
 import { BASE_API_URL } from '@/lib/constants';
 import { store } from '@/store';
-import { login, logout } from '@/store/slices/app-slice';
+import { appActions } from '@/store/slices/app-slice';
 
 export const apiUnprotect = axios.create({
   baseURL: BASE_API_URL,
@@ -45,13 +45,13 @@ const handleResponseRejected = async (error: AxiosError | Error) => {
       const state = store.getState();
       const refreshToken = state.app.refreshToken;
       const tokens = await refreshTokens({ refreshToken });
-      dispatch(login(tokens));
+      dispatch(appActions.login(tokens));
       isRetry = false;
       return apiProtected.request(originalRequest);
     }
   } catch (err) {
     isRetry = false;
-    dispatch(logout());
+    dispatch(appActions.logout());
   }
 };
 

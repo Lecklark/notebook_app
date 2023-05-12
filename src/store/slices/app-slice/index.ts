@@ -22,5 +22,4 @@ export const appSlice = createSlice({
   },
 });
 
-export const { login, logout } = appSlice.actions;
-export const appReducer = appSlice.reducer;
+export const { reducer: appReducer, actions: appActions } = appSlice;
