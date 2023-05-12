@@ -12,8 +12,12 @@ export type RefreshTokensResponse = TokensResponse;
 export type RegistrationPayload = AuthUser;
 export type LoginPayload = AuthUser;
 
+export type RefreshPayload = {
+  refreshToken: string;
+};
+
 export type RegisterUser = (
   payload: RegistrationPayload,
 ) => Promise<RegistrationResponse>;
 export type LoginUser = (payload: LoginPayload) => Promise<LoginResponse>;
-export type RefreshTokens = () => Promise<RefreshTokensResponse>;
+export type RefreshTokens = (payload: RefreshPayload) => Promise<RefreshTokensResponse>;

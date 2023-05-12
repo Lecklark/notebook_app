@@ -25,7 +25,9 @@ export const loginUser: LoginUser = async ({ email, password }) => {
   return data;
 };
 
-export const refreshTokens: RefreshTokens = async () => {
-  const { data } = await apiUnprotect.get<RefreshTokensResponse>(`/user/refresh`);
+export const refreshTokens: RefreshTokens = async ({ refreshToken }) => {
+  const { data } = await apiUnprotect.post<RefreshTokensResponse>(`/user/refresh`, {
+    refreshToken,
+  });
   return data;
 };

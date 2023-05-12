@@ -1,5 +1,4 @@
 import { Box, Text } from '@chakra-ui/react';
-import { AuthForm } from '@components/widgets/auth-form';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 

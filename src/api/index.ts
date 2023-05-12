@@ -8,7 +8,7 @@ import axios, {
 import { refreshTokens } from '@/api/auth-service';
 import { BASE_API_URL } from '@/lib/constants';
 import { store } from '@/store';
-import { login } from '@/store/slices/app-slice';
+import { login, logout } from '@/store/slices/app-slice';
 
 export const apiUnprotect = axios.create({
   baseURL: BASE_API_URL,
@@ -34,16 +34,24 @@ const handleResponseFulfilled = (response: AxiosResponse) => response;
 let isRetry = false;
 
 const handleResponseRejected = async (error: AxiosError | Error) => {
-  if (!isAxiosError(error)) {
-    return Promise.reject(error);
-  }
-  const originalRequest = error.config;
-  if (error?.response?.status === 401 && !isRetry && originalRequest) {
-    isRetry = true;
-    const dispatch = store.dispatch;
-    const tokens = await refreshTokens();
-    dispatch(login(tokens));
-    return apiProtected.request(originalRequest);
+  const dispatch = store.dispatch;
+  try {
+    if (!isAxiosError(error)) {
+      return Promise.reject(error);
+    }
+    const originalRequest = error.config;
+    if (error?.response?.status === 401 && !isRetry && originalRequest) {
+      isRetry = true;
+      const state = store.getState();
+      const refreshToken = state.app.refreshToken;
+      const tokens = await refreshTokens({ refreshToken });
+      dispatch(login(tokens));
+      isRetry = false;
+      return apiProtected.request(originalRequest);
+    }
+  } catch (err) {
+    isRetry = false;
+    dispatch(logout());
   }
 };
 

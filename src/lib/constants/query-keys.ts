@@ -1,0 +1,1 @@
+export const CONTACTS_QUERY_KEY = 'CONTACTS_QUERY_KEY';

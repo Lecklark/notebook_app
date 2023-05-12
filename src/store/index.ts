@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import { appReducer } from './slices/app-slice';
+import { modalsReducer } from './slices/modals-slice';
 
 const persistConfig = {
   key: 'root',
@@ -20,6 +21,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   app: appReducer,
+  modals: modalsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

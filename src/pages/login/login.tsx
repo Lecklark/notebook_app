@@ -1,6 +1,6 @@
 import { Box, useToast } from '@chakra-ui/react';
-import { AuthForm, AuthFormValues } from '@components/widgets/auth-form';
 import { FormWrapper } from '@components/widgets/form-wrapper';
+import { AuthForm, AuthFormValues } from '@components/widgets/forms';
 
 import { useLogin } from '@/api/auth-service';
 import { ROUTES } from '@/lib/constants';
