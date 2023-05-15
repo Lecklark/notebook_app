@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import { ReactElement } from 'react';
 
 import { AllModals, ModalsProps } from '@/types';
 
 export type OpenModalButtonProps = {
-  children: ReactNode;
+  children: ReactElement;
   modal: AllModals;
   modalProps?: ModalsProps;
 };

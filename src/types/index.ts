@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 
-import { ContactData } from "@/api/contacts-service/types";
+import { ContactData } from '@/api/contacts-service/types';
 
 export interface AuthUser {
   email: string;
@@ -14,6 +14,9 @@ export interface Contact {
   address: string;
 }
 
+// eslint-disable-next-line prettier/prettier
+export type FormikParams<T> = ReturnType<typeof useFormik<T>>;
+
 export enum MODALS {
   CREATE_CONTACT_MODAL = 'CREATE_CONTACT_MODAL',
   DELETE_CONTACT_MODAL = 'DELETE_CONTACT_MODAL',
@@ -22,22 +25,16 @@ export enum MODALS {
 
 export type AllModals = keyof Record<MODALS, string>;
 
-// eslint-disable-next-line prettier/prettier
-export type FormikParams<T> = ReturnType<typeof useFormik<T>>;
-
-export type TableField = {
-  Header: string;
-  accessor: string;
-  Cell: string;
-}
-
 type DeleteContactModalProps = {
   contact: ContactData;
-}
+};
 
 type UpdateContactModalProps = {
   contact: ContactData;
-}
-
+};
 
 export type ModalsProps = DeleteContactModalProps | UpdateContactModalProps | null;
+
+export type FilterType = {
+  [key: string]: any;
+};

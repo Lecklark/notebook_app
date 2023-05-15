@@ -1,13 +1,22 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  useMutation,
+  useQuery,
+  useQueryClient,
+  UseQueryOptions,
+} from '@tanstack/react-query';
 
 import { CONTACTS_QUERY_KEY } from '@/lib/constants';
-import { Contact } from '@/types';
+import { createQueryString } from '@/lib/utils';
+import { Contact, FilterType } from '@/types';
 
 import { contactService } from './contacts-service';
 import { ContactData } from './types';
 
-export const useContacts = () => {
-  return useQuery([CONTACTS_QUERY_KEY], contactService.getContacts);
+export const useContacts = (filter: FilterType = {}) => {
+  const queryKey = CONTACTS_QUERY_KEY + createQueryString(filter);
+  return useQuery([queryKey], () => contactService.getContacts(filter), {
+    keepPreviousData: true,
+  });
 };
 
 export function useCreateContact() {

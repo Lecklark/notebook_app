@@ -12,21 +12,22 @@ import {
 } from '@chakra-ui/react';
 import { CreateContactForm, CreateContactFormValues } from '@components/widgets/forms';
 import { useRef } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import { useUpdateContact } from '@/api/contacts-service';
 import { useModalController } from '@/lib/hooks';
-import { MESSAGES, useI18N } from '@/lib/i18n';
+import { MESSAGES } from '@/lib/i18n';
 import { useAppSelector } from '@/store/hooks';
 import { modalPropsInState } from '@/store/selectors';
 import { FormikParams, MODALS } from '@/types';
 
 export const UpdateContactModal = () => {
   const [isOpen, _, closeHandler] = useModalController(MODALS.UPDATE_CONTACT_MODAL);
-  const [title, btnText] = useI18N(MESSAGES.CREATE_CONTACT_TITLE, MESSAGES.SAVE_TEXT);
   const formikRef = useRef<FormikParams<CreateContactFormValues> | null>(null);
   const { mutate: updateContact } = useUpdateContact();
   const contactData = useAppSelector(modalPropsInState);
   const contactID = contactData?.contact.id;
+  const contactName = contactData?.contact.fullName;
 
   const setFormikEntity = (formik: FormikParams<CreateContactFormValues>) => {
     formikRef.current = formik;
@@ -59,7 +60,10 @@ export const UpdateContactModal = () => {
           alignItems='center'
           fontSize={{ base: '18px', '2xl': '20px' }}
         >
-          {title}
+          <FormattedMessage
+            id={MESSAGES.UPDATE_MODAL_TITLE}
+            values={{ fullName: contactName }}
+          />
           <Button variant='solid' fontSize='inherit' onClick={closeHandler}>
             <CloseIcon />
           </Button>
@@ -74,7 +78,7 @@ export const UpdateContactModal = () => {
         </ModalBody>
         <ModalFooter pb={10}>
           <Button variant='solid' fontSize='inherit' onClick={handleSubmit} ml='auto'>
-            {btnText}
+            <FormattedMessage id={MESSAGES.UPDATE_TEXT} />
           </Button>
         </ModalFooter>
       </ModalContent>

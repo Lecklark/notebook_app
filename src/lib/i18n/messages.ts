@@ -26,7 +26,12 @@ export const messages: Messages = {
     [MESSAGES.ADDRESS_INPUT_LABEL]: 'Адрес',
     [MESSAGES.CREATE_CONTACT_TITLE]: 'Создать новый контакт',
     [MESSAGES.SAVE_TEXT]: 'Сохранить',
+    [MESSAGES.CANCEL_TEXT]: 'Отмена',
     [MESSAGES.REQUIRED_FIELD]: 'Обязательное поле',
     [MESSAGES.INVALID_FORMAT]: 'Неверный формат',
+    [MESSAGES.DELETE_MODAL_TITLE]: 'Удалить контакт {fullName}?',
+    [MESSAGES.DELETE_TEXT]: 'Удалить',
+    [MESSAGES.UPDATE_MODAL_TITLE]: 'Редактировать контакт {fullName}?',
+    [MESSAGES.UPDATE_TEXT]: 'Обновить',
   },
 };

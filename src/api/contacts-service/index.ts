@@ -1,2 +1,2 @@
-export * from './contacts-service';
+export { contactService } from './contacts-service';
 export * from './hooks';

@@ -7,9 +7,11 @@ import {
   ModalHeader,
   ModalOverlay,
 } from '@chakra-ui/react';
+import { FormattedMessage } from 'react-intl';
 
 import { useDeleteContact } from '@/api/contacts-service';
 import { useModalController } from '@/lib/hooks';
+import { MESSAGES } from '@/lib/i18n';
 import { useAppSelector } from '@/store/hooks';
 import { modalPropsInState } from '@/store/selectors';
 import { MODALS } from '@/types';
@@ -33,11 +35,20 @@ export const DeleteContactModal = () => {
     <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
       <ModalOverlay />
       <ModalContent w='100%' maxW={{ base: '288px', md: '350px', '2xl': '550px' }} p={5}>
-        <ModalHeader mb='10px'>{contactName}</ModalHeader>
+        <ModalHeader mb='10px'>
+          <FormattedMessage
+            id={MESSAGES.DELETE_MODAL_TITLE}
+            values={{ fullName: contactName }}
+          />
+        </ModalHeader>
         <ModalCloseButton />
         <ModalFooter display='grid' gridTemplateColumns='1fr 1fr' gridColumnGap='8px'>
-          <Button onClick={onClose}>Cancel</Button>
-          <Button onClick={deleteHandler}>Delete</Button>
+          <Button onClick={onClose}>
+            <FormattedMessage id={MESSAGES.CANCEL_TEXT} />
+          </Button>
+          <Button onClick={deleteHandler}>
+            <FormattedMessage id={MESSAGES.DELETE_TEXT} />
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

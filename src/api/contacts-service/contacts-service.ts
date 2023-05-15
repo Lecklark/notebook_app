@@ -6,10 +6,12 @@ import {
   GetContactsData,
   UpdateContact,
 } from '@/api/contacts-service/types';
+import { createQueryString } from '@/lib/utils';
 
 class ContactsService {
-  getContacts: GetContactsData = async () => {
-    const { data } = await apiProtected.get<ContactsResponse>(`/contacts`);
+  getContacts: GetContactsData = async (filter = {}) => {
+    const query = createQueryString(filter);
+    const { data } = await apiProtected.get<ContactsResponse>(`/contacts?${query}`);
     return data;
   };
 

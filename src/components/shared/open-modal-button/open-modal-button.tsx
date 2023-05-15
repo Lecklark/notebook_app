@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { cloneElement, FC } from 'react';
 
 import { useModalController } from '@/lib/hooks';
 
@@ -11,9 +11,7 @@ export const OpenModalButton: FC<OpenModalButtonProps> = ({
 }) => {
   const [, open] = useModalController(modal, modalProps);
 
-  return (
-    <div onClick={open} role='button' tabIndex={0}>
-      {children}
-    </div>
-  );
+  return cloneElement(children, {
+    onClick: () => open(),
+  });
 };

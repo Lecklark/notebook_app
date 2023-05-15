@@ -5,13 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="656ef3b6-17ad-440b-a182-2b24ce445f57" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/lib/utils/createQueryString.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/auth-service/auth-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/auth-service/auth-service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/auth-service/hooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/auth-service/hooks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/auth-service/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/auth-service/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/contacts-service/contacts-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/contacts-service/contacts-service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/contacts-service/hooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/contacts-service/hooks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/contacts-service/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/contacts-service/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/contacts-service/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/contacts-service/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/open-modal-button/open-modal-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/open-modal-button/open-modal-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/open-modal-button/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/open-modal-button/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/widgets/modals/delete-contact-modal/delete-contact-modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/widgets/modals/delete-contact-modal/delete-contact-modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/widgets/modals/update-contact-modal/update-contact-modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/widgets/modals/update-contact-modal/update-contact-modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/widgets/tables/contacts-table/contacts-table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/widgets/tables/contacts-table/contacts-table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/i18n/messages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/i18n/messages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/i18n/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/i18n/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/schemas/contact-form-schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/schemas/contact-form-schema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/notebook/notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/notebook/notebook.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +45,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/MyProjects/notebook-app",
+    "last_opened_file_path": "C:/MyProjects/notebook-backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -68,7 +79,8 @@
       <workItem from="1683183683738" duration="8747000" />
       <workItem from="1683200879142" duration="7546000" />
       <workItem from="1683874582512" duration="10507000" />
-      <workItem from="1683889420783" duration="1090000" />
+      <workItem from="1683889420783" duration="5457000" />
+      <workItem from="1684127426105" duration="10981000" />
     </task>
     <servers />
   </component>
