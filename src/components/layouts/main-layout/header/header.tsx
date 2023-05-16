@@ -1,4 +1,5 @@
 import { Box, Button, Image } from '@chakra-ui/react';
+import { LangChanger } from '@components/shared/lang-changer';
 import { ThemeSwitcher } from '@components/shared/theme-switcher';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -40,8 +41,11 @@ export const Header: FC = () => {
     >
       <Image src={Logo} borderRadius='20px' alt='logo' display={['none', 'block']} />
       <Box display='flex' gridGap={['20px', '50px']}>
+        <LangChanger />
         <ThemeSwitcher />
-        <Button onClick={buttonClickHandler}>{btnText}</Button>
+        <Button onClick={buttonClickHandler} flexShrink={0}>
+          {btnText}
+        </Button>
       </Box>
     </Box>
   );

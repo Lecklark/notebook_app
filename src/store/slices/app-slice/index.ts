@@ -1,11 +1,14 @@
-import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { AppState, LoginPayload } from './types';
+import { getUserLang } from '@/lib/utils';
+
+import { AppState, ChangeLangPayload, LoginPayload } from './types';
 
 const initialState: AppState = {
   accessToken: '',
   refreshToken: '',
   isAuth: false,
+  lang: getUserLang(),
 };
 
 export const appSlice = createSlice({
@@ -19,6 +22,9 @@ export const appSlice = createSlice({
       state.isAuth = true;
     },
     logout: () => initialState,
+    changeLang: (state, action: PayloadAction<ChangeLangPayload>) => {
+      state.lang = action.payload;
+    },
   },
 });
 

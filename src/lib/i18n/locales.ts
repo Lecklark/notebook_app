@@ -1,3 +1,6 @@
 export enum LOCALES {
-  RUSSIAN = 'ru',
+  RUSSIAN = 'ru-RU',
+  ENGLISH = 'en-EN',
 }
+
+export type AllLocales = keyof Record<LOCALES, string>;

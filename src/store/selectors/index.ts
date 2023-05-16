@@ -6,6 +6,7 @@ import { RootState } from '../types';
 
 // app-slice
 export const isAuthInState = (state: RootState) => state.app.isAuth;
+export const langInState = (state: RootState) => state.app.lang;
 
 // modals-slice
 export const openedModalInState = (state: RootState) => state.modals.openedModal;

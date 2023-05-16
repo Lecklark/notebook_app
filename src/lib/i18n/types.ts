@@ -2,11 +2,7 @@ import { LOCALES } from './locales';
 
 export type LocaleType = typeof LOCALES[keyof typeof LOCALES];
 
-export type Messages = {
-  [LOCALES.RUSSIAN]: {
-    [key: string]: string;
-  };
-};
+export type Messages = Record<LOCALES, { [key: string]: string }>;
 
 export enum MESSAGES {
   WELCOME_TITLE = 'WELCOME_TITLE',

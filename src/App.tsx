@@ -13,9 +13,13 @@ const NotebookPage = lazyLoad(() => import('@/pages/notebook'));
 
 import { ProtectedRoute } from '@components/shared/protected-route';
 import { ModalsContainer } from '@components/widgets/modals';
+import { IntlProvider } from 'react-intl';
 
 import { ROUTES } from '@/lib/constants';
+import { messages } from '@/lib/i18n';
 import { lazyLoad } from '@/lib/utils';
+import { useAppSelector } from '@/store/hooks';
+import { langInState } from '@/store/selectors';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -57,11 +61,13 @@ const router = createBrowserRouter(
 );
 
 function App() {
+  const lang = useAppSelector(langInState);
+
   return (
-    <>
+    <IntlProvider messages={messages[lang]} locale={lang}>
       <RouterProvider router={router} />
       <ModalsContainer />
-    </>
+    </IntlProvider>
   );
 }
 
