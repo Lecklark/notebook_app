@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="656ef3b6-17ad-440b-a182-2b24ce445f57" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/apple-touch-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/mask-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pwa-192x192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pwa-512x512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/widgets/forms/auth-form/auth-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/widgets/forms/auth-form/auth-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/widgets/tables/contacts-table/contacts-table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/widgets/tables/contacts-table/contacts-table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/i18n/messages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/i18n/messages.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/i18n/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/i18n/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/notebook/notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/notebook/notebook.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +39,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Projects/shedex-frontend",
+    "last_opened_file_path": "C:/MyProjects/notebook-app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -53,6 +59,7 @@
       <recent name="C:\MyProjects\notebook-app\src\assets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\MyProjects\notebook-app\public" />
       <recent name="C:\MyProjects\notebook-app\src\components\widgets\forms" />
     </key>
   </component>
@@ -70,7 +77,8 @@
       <workItem from="1683889420783" duration="5457000" />
       <workItem from="1684127426105" duration="14394000" />
       <workItem from="1684214008080" duration="2101000" />
-      <workItem from="1684223275953" duration="8442000" />
+      <workItem from="1684223275953" duration="8887000" />
+      <workItem from="1684240359397" duration="2970000" />
     </task>
     <servers />
   </component>
