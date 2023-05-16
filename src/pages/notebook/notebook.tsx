@@ -1,8 +1,8 @@
 import { AddIcon } from '@chakra-ui/icons';
-import { Box, Button, Text } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import { OpenModalButton } from '@components/shared/open-modal-button';
 import { SearchInput } from '@components/shared/search-input';
-import { ContactsTable } from '@components/widgets/tables/contacts-table';
+import { ContactsTable } from '@components/widgets/tables';
 import { ChangeEvent, useMemo, useState } from 'react';
 
 import { useContacts } from '@/api/contacts-service';

@@ -1,1 +1,1 @@
-export { CreateContactModal } from './create-contact-modal';
+export { CreateContactModal as default } from './create-contact-modal';

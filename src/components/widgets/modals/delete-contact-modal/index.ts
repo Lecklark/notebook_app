@@ -1,1 +1,1 @@
-export { DeleteContactModal } from './delete-contact-modal';
+export { DeleteContactModal as default } from './delete-contact-modal';

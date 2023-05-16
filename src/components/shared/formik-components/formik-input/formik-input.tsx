@@ -21,7 +21,13 @@ export const FormikInput: FC<FormikInputProps> = ({
 }) => {
   const [field, meta, { setValue, setTouched }] = useField(name);
 
-  const rightIcon = rightElement ? rightElement : <CheckIcon color='green.500' />;
+  const rightIcon = rightElement ? (
+    <InputRightElement>{rightElement}</InputRightElement>
+  ) : (
+    <InputRightElement opacity={!meta.error && meta.touched ? '1' : '0'}>
+      <CheckIcon color='green.500' />
+    </InputRightElement>
+  );
 
   return (
     <FormControl isInvalid={!!meta.error && meta.touched} position='relative'>
@@ -45,9 +51,7 @@ export const FormikInput: FC<FormikInputProps> = ({
             setTouched(true);
           }}
         />
-        <InputRightElement opacity={!meta.error && meta.touched ? '1' : '0'}>
-          {rightIcon}
-        </InputRightElement>
+        {rightIcon}
       </InputGroup>
       <FormErrorMessage
         position='absolute'

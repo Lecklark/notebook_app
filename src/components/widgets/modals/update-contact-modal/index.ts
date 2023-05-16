@@ -1,1 +1,1 @@
-export { UpdateContactModal } from './update-contact-modal';
+export { UpdateContactModal as default } from './update-contact-modal';

@@ -20,5 +20,12 @@ export const FormikPasswordInput: FC<PasswordInputProps> = ({ name, ...rest }) =
     />
   );
 
-  return <FormikInput name={name} rightElement={rightElement} {...rest} />;
+  return (
+    <FormikInput
+      name={name}
+      type={show ? 'text' : 'password'}
+      rightElement={rightElement}
+      {...rest}
+    />
+  );
 };

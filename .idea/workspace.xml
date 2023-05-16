@@ -5,20 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="656ef3b6-17ad-440b-a182-2b24ce445f57" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/shared/lang-changer/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/shared/lang-changer/lang-changer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/utils/getUserLang.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/widgets/tables/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layouts/main-layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/main-layout/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/i18n/locales.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/i18n/locales.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/formik-components/formik-input/formik-input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/formik-components/formik-input/formik-input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/formik-components/formik-password-input/formik-password-input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/formik-components/formik-password-input/formik-password-input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/widgets/modals/create-contact-modal/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/widgets/modals/create-contact-modal/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/widgets/modals/delete-contact-modal/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/widgets/modals/delete-contact-modal/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/widgets/modals/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/widgets/modals/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/widgets/modals/update-contact-modal/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/widgets/modals/update-contact-modal/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/i18n/messages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/i18n/messages.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/i18n/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/i18n/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/selectors/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/selectors/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/slices/app-slice/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/slices/app-slice/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/slices/app-slice/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/slices/app-slice/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/notebook/notebook.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/notebook/notebook.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,22 +33,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/MyProjects/notebook-app",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "settings.typescriptcompiler",
-    "ts.external.directory.path": "C:\\MyProjects\\notebook-app\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/MyProjects/notebook-app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\MyProjects\\notebook-app\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\MyProjects\notebook-app\src\components\widgets\modals\update-contact-modal" />
@@ -77,7 +74,8 @@
       <workItem from="1683874582512" duration="10507000" />
       <workItem from="1683889420783" duration="5457000" />
       <workItem from="1684127426105" duration="14394000" />
-      <workItem from="1684214008080" duration="1230000" />
+      <workItem from="1684214008080" duration="2101000" />
+      <workItem from="1684223275953" duration="2433000" />
     </task>
     <servers />
   </component>
