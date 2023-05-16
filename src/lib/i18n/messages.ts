@@ -33,6 +33,8 @@ export const messages: Messages = {
     [MESSAGES.DELETE_TEXT]: 'Удалить',
     [MESSAGES.UPDATE_MODAL_TITLE]: 'Редактировать контакт {fullName}?',
     [MESSAGES.UPDATE_TEXT]: 'Обновить',
+    [MESSAGES.DATA_LOADING_ERROR]: 'Произошла ошибка во время загрузки данных',
+    [MESSAGES.EMPTY_CONTACTS_TABLE]: 'Список контактов пуст',
   },
   [LOCALES.ENGLISH]: {
     [MESSAGES.WELCOME_TITLE]: 'Welcome to "Notebook app"',
@@ -64,5 +66,7 @@ export const messages: Messages = {
     [MESSAGES.DELETE_TEXT]: 'Delete',
     [MESSAGES.UPDATE_MODAL_TITLE]: 'Edit contact {fullName}?',
     [MESSAGES.UPDATE_TEXT]: 'Edit',
+    [MESSAGES.DATA_LOADING_ERROR]: 'An error occurred while loading data',
+    [MESSAGES.EMPTY_CONTACTS_TABLE]: 'There is no contacts yet',
   },
 };

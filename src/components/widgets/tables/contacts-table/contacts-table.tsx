@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import { TableColumn, TableCreator } from '@components/shared/table-creator';
-import { FC, memo } from 'react';
+import { FC } from 'react';
 
 import { ContactData } from '@/api/contacts-service/types';
 import { MESSAGES, useI18N } from '@/lib/i18n';
@@ -8,7 +8,7 @@ import { MESSAGES, useI18N } from '@/lib/i18n';
 import { ControlsCell } from './controls-cell';
 import { ContactsTableProps } from './types';
 
-export const ContactsTable: FC<ContactsTableProps> = memo(({ contacts }) => {
+export const ContactsTable: FC<ContactsTableProps> = ({ contacts }) => {
   const [fullNameHeader, emailHeader, phoneHeader, addressHeader] = useI18N(
     MESSAGES.FULLNAME_INPUT_LABEL,
     MESSAGES.CONTACT_EMAIL_INPUT_LABEL,
@@ -49,5 +49,4 @@ export const ContactsTable: FC<ContactsTableProps> = memo(({ contacts }) => {
       <TableCreator columns={columns} data={contacts} />
     </Box>
   );
-});
-ContactsTable.displayName = 'ContactsTable';
+};

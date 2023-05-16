@@ -1,5 +1,5 @@
 import { AddIcon } from '@chakra-ui/icons';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, Spinner } from '@chakra-ui/react';
 import { OpenModalButton } from '@components/shared/open-modal-button';
 import { SearchInput } from '@components/shared/search-input';
 import { ContactsTable } from '@components/widgets/tables';
@@ -12,9 +12,11 @@ import { MODALS } from '@/types';
 
 export const Notebook = () => {
   const [search, setSearch] = useState<string>('');
-  const [placeholder, btnText] = useI18N(
+  const [placeholder, btnText, emptyMessage, errorMessage] = useI18N(
     MESSAGES.SEARCH_PLACEHOLDER,
     MESSAGES.NEW_CONTACT,
+    MESSAGES.EMPTY_CONTACTS_TABLE,
+    MESSAGES.DATA_LOADING_ERROR,
   );
 
   const searchChangeHandler = debounce((e: ChangeEvent<HTMLInputElement>) => {
@@ -22,13 +24,15 @@ export const Notebook = () => {
   }, 200);
   const contactFilter = search ? { search } : {};
 
-  const { data: contacts = [] } = useContacts(contactFilter);
+  const { data: contacts = [], isLoading, isError } = useContacts(contactFilter);
 
   const sortedContacts = useMemo(() => {
     return [...contacts].sort(function (a, b) {
       return +new Date(b.createdAt) - +new Date(a.createdAt);
     });
   }, [contacts]);
+
+  const showEmptyMessage = !isLoading && !isError && sortedContacts.length === 0;
 
   return (
     <Box
@@ -51,9 +55,14 @@ export const Notebook = () => {
           </Button>
         </OpenModalButton>
       </Box>
-      {sortedContacts && sortedContacts.length > 0 ? (
+      {sortedContacts && !!sortedContacts.length && (
         <ContactsTable contacts={sortedContacts} />
-      ) : null}
+      )}
+      <Box w='fit-content' m='30px auto' fontSize='22px'>
+        {isLoading && <Spinner size='xl' />}
+        {isError && errorMessage}
+        {showEmptyMessage && emptyMessage}
+      </Box>
     </Box>
   );
 };

@@ -29,17 +29,19 @@ export const AuthForm: FC<AuthFormProps> = ({ btnText, onSubmit }) => {
     onSubmit(values);
   }
 
-  const submitForm = formik.submitForm;
+  const submitForm = formik.handleSubmit;
 
   return (
-    <Box display='flex' flexDir='column' alignItems='center' gridGap='20px'>
-      <FormikProvider value={formik}>
-        <FormikInput name='email' label={emailLabel} />
-        <FormikPasswordInput name='password' label={passwordLabel} />
-        <Button w={['70%', '40%']} mt='30px' onClick={submitForm}>
-          {btnText}
-        </Button>
-      </FormikProvider>
-    </Box>
+    <form onSubmit={submitForm}>
+      <Box display='flex' flexDir='column' alignItems='center' gridGap='20px'>
+        <FormikProvider value={formik}>
+          <FormikInput name='email' label={emailLabel} />
+          <FormikPasswordInput name='password' label={passwordLabel} />
+          <Button type='submit' w={['70%', '40%']} mt='30px'>
+            {btnText}
+          </Button>
+        </FormikProvider>
+      </Box>
+    </form>
   );
 };
